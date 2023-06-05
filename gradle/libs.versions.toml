@@ -14,6 +14,8 @@ googlMaterial = "1.9.0"
 composeNavigation = "2.5.1"
 androidx-window = "1.1.0-rc01"
 ksp = "1.8.20-1.0.11"
+androidxAppCompact = "1.6.1"
+androidMaterial = "1.9.0"
 
 
 [libraries]
@@ -35,6 +37,8 @@ androidx-compose-ui-test-manifest = {module="androidx.compose.ui:ui-test-manifes
 google-material = { group = "com.google.android.material", name = "material", version.ref ="googlMaterial"}
 androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation"}
 androidx-window = { module = "androidx.window:window", version.ref = "androidx-window" }
+androidx-appcompact = { group="androidx.appcompat", name="appcompat", version.ref="androidxAppCompact"}
+androidx-material = { group="com.google.android.material", name="material",version.ref="androidMaterial"}
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradlePlugin" }
