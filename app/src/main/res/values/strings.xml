@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Buster</string>
+    <string name="explore">Discover</string>
+    <string name="watchlist">WatchList</string>
+    <string name="profile">Profile</string>
+    <string name="profile_icon_info_description">Profile Icon Description</string>
+    <string name="discover_icon_info_description">Discover Icon Description</string>
+    <string name="watchlist_icon_info_description">WatchList Icon Description</string>
+
 </resources>

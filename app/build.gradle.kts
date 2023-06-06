@@ -48,6 +48,16 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":feature:discover"))
+    implementation(project(":feature:watchlist"))
+    implementation(project(":feature:profile"))
+    implementation(project(":core:design"))
+
+    implementation(libs.androidx.tracing.ktx)
+    implementation(libs.androidx.compose.runtime.tracing)
+    implementation(libs.androidx.compose.material3.windowSizeClass)
+    implementation(libs.androidx.navigation)
     implementation (libs.androidx.core.ktx)
     implementation (libs.bundles.lifecycle)
     implementation (libs.androidx.activity.compose)

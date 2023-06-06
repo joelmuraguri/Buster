@@ -16,6 +16,9 @@ androidx-window = "1.1.0-rc01"
 ksp = "1.8.20-1.0.11"
 androidxAppCompact = "1.6.1"
 androidMaterial = "1.9.0"
+androidxComposeMaterial3 = "1.1.0-alpha06"
+androidxComposeRuntimeTracing = "1.0.0-alpha01"
+androidxTracing = "1.1.0"
 
 
 [libraries]
@@ -39,6 +42,10 @@ androidx-navigation = { group = "androidx.navigation", name = "navigation-compos
 androidx-window = { module = "androidx.window:window", version.ref = "androidx-window" }
 androidx-appcompact = { group="androidx.appcompat", name="appcompat", version.ref="androidxAppCompact"}
 androidx-material = { group="com.google.android.material", name="material",version.ref="androidMaterial"}
+androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "androidxComposeMaterial3" }
+androidx-compose-runtime-tracing = { group = "androidx.compose.runtime", name = "runtime-tracing", version.ref = "androidxComposeRuntimeTracing" }
+androidx-tracing-ktx = { group = "androidx.tracing", name = "tracing-ktx", version.ref = "androidxTracing" }
+
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradlePlugin" }
