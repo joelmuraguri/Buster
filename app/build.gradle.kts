@@ -3,6 +3,10 @@ plugins {
     id("org.jetbrains.kotlin.android")
 }
 
+//val apikeyPropertiesFile = rootProject.file("apikey.properties")
+//val apikeyProperties = new Properties()
+//apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
 android {
     namespace = "com.joel.buster"
     compileSdk = 33
@@ -18,6 +22,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+//        buildConfigField("String", "BUSTER_API_KEY", apikeyProperties["BUSTER_API_KEY"])
     }
 
     buildTypes {
@@ -53,6 +59,7 @@ dependencies {
     implementation(project(":feature:watchlist"))
     implementation(project(":feature:profile"))
     implementation(project(":core:design"))
+    implementation(project(":core:network"))
 
     implementation(libs.androidx.tracing.ktx)
     implementation(libs.androidx.compose.runtime.tracing)
@@ -68,4 +75,5 @@ dependencies {
     androidTestImplementation (libs.androidx.test.espresso)
     androidTestImplementation (platform(libs.androidx.compose.bom))
     debugImplementation (libs.bundles.compose.debug)
+
 }
