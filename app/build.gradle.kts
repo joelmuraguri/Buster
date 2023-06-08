@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 //val apikeyPropertiesFile = rootProject.file("apikey.properties")
@@ -70,6 +72,9 @@ dependencies {
     implementation (libs.androidx.activity.compose)
     implementation (platform(libs.androidx.compose.bom))
     implementation (libs.bundles.compose)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    kaptAndroidTest(libs.hilt.compiler)
     testImplementation (libs.junit)
     androidTestImplementation (libs.bundles.junit.test)
     androidTestImplementation (libs.androidx.test.espresso)

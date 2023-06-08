@@ -3,7 +3,7 @@ package com.joel.buster
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -11,15 +11,21 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.joel.buster.ui.theme.BusterTheme
+import com.joel.discover.DiscoverViewModel
+
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+        val discoverViewModel: DiscoverViewModel by viewModels()
+
+
         super.onCreate(savedInstanceState)
         setContent {
             BusterTheme {
@@ -28,7 +34,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    BusterApp(windowSizeClass = calculateWindowSizeClass(this))
+                    BusterApp(windowSizeClass = calculateWindowSizeClass(this), discoverViewModel= discoverViewModel)
                 }
             }
         }

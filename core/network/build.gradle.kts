@@ -1,10 +1,7 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    id("org.jetbrains.kotlin.kapt")
     id("dagger.hilt.android.plugin")
 
 }
@@ -31,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 
@@ -49,8 +46,9 @@ dependencies {
     implementation(libs.bundles.retrofit)
     implementation(libs.bundles.okhttp)
     implementation(libs.androidx.paging)
-    implementation(libs.bundles.hilt)
-    kapt(libs.bundles.hilt.kapt)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    kaptAndroidTest(libs.hilt.compiler)
     testImplementation(libs.junit)
     androidTestImplementation (libs.bundles.junit.test)
     androidTestImplementation(libs.androidx.test.espresso)

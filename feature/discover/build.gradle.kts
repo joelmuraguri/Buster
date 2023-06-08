@@ -1,6 +1,8 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -41,6 +43,10 @@ android {
 
 dependencies {
 
+    implementation(project(":core:network"))
+    implementation(project(":core:common"))
+
+
     implementation(libs.androidx.navigation)
     implementation (libs.bundles.lifecycle)
     implementation (libs.androidx.activity.compose)
@@ -49,6 +55,12 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompact)
     implementation(libs.androidx.material)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.paging)
+    implementation(libs.coil.compose)
+    kapt(libs.hilt.compiler)
+    kaptAndroidTest(libs.hilt.compiler)
     testImplementation(libs.junit)
     androidTestImplementation (libs.bundles.junit.test)
     androidTestImplementation(libs.androidx.test.espresso)
