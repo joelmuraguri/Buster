@@ -23,7 +23,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -33,7 +32,7 @@ import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import coil.network.HttpException
 import com.example.common.Constants.BASE_BACKDROP_IMAGE_URL
-import com.example.network.model.Film
+import com.example.network.model.FilmDTO
 import java.io.IOException
 
 
@@ -61,7 +60,7 @@ fun DiscoverScreen(
 
 @Composable
 fun DiscoverContent(
-    pagingItems : LazyPagingItems<Film>,
+    pagingItems : LazyPagingItems<FilmDTO>,
     onErrorClick : () -> Unit
 ){
     Box(
@@ -153,5 +152,4 @@ fun FilmItem(
             }
         }
     }
-
 }

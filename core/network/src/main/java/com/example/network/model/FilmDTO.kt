@@ -1,6 +1,6 @@
 package com.example.network.model
 
-data class Film(
+data class FilmDTO(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
