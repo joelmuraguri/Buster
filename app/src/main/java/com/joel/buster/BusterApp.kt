@@ -31,14 +31,12 @@ import com.joel.design.components.BusterNavigationBar
 import com.joel.design.components.BusterNavigationBarItem
 import com.joel.design.components.BusterNavigationRail
 import com.joel.design.components.BusterNavigationRailItem
-import com.joel.discover.DiscoverViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun BusterApp(
     windowSizeClass: WindowSizeClass,
     appState: BusterAppState = rememberBusterAppState(windowSizeClass = windowSizeClass),
-    discoverViewModel: DiscoverViewModel
 ){
 
     Scaffold(
@@ -78,7 +76,7 @@ fun BusterApp(
                 )
             }
             Column(Modifier.fillMaxSize()) {
-                BusterNavHost(appState = appState, discoverViewModel = discoverViewModel)
+                BusterNavHost(appState = appState)
             }
         }
     }

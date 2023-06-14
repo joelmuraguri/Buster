@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.de.undercouch.gradle.tasks.download.org.apache.http.conn.util.PublicSuffixMatcherLoader.load
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -5,9 +7,10 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
-//val apikeyPropertiesFile = rootProject.file("apikey.properties")
-//val apikeyProperties = new Properties()
-//apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+//val credentials = rootProject.file("local.properties")
+//val credentialProperty = java.util.Properties().apply {
+//    load(credentials.inputStream())
+//}
 
 android {
     namespace = "com.joel.buster"
@@ -25,7 +28,17 @@ android {
             useSupportLibrary = true
         }
 
-//        buildConfigField("String", "BUSTER_API_KEY", apikeyProperties["BUSTER_API_KEY"])
+//        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/\"")
+//        buildConfigField("String", "SMALL_IMAGE_URL", "\"https://image.tmdb.org/t/p/w200\"")
+//        buildConfigField("String", "LARGE_IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\"")
+//        buildConfigField("String", "ORIGINAL_IMAGE_URL", "\"https://image.tmdb.org/t/p/original\"")
+
+
+//        val properties = java.util.Properties().apply {
+//            load(project.rootProject.file("local.properties").inputStream())
+//        }
+//        buildConfigField("String", "TMDB_API_KEY", "\"${properties.getProperty("TMDB_API_KEY")}\"")
+
     }
 
     buildTypes {
@@ -60,8 +73,12 @@ dependencies {
     implementation(project(":feature:discover"))
     implementation(project(":feature:watchlist"))
     implementation(project(":feature:profile"))
+    implementation(project(":feature:search"))
+    implementation(project(":feature:media"))
     implementation(project(":core:design"))
     implementation(project(":core:network"))
+    implementation(project(":core:common"))
+    implementation(project(":core:domain"))
 
     implementation(libs.androidx.tracing.ktx)
     implementation(libs.androidx.compose.runtime.tracing)
@@ -73,6 +90,7 @@ dependencies {
     implementation (platform(libs.androidx.compose.bom))
     implementation (libs.bundles.compose)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.hilt.compiler)
     kaptAndroidTest(libs.hilt.compiler)
     testImplementation (libs.junit)

@@ -11,8 +11,8 @@ fun NavController.navigateToDiscover(navOptions: NavOptions ?= null){
     this.navigate(DISCOVER_ROUTE,navOptions)
 }
 
-fun NavGraphBuilder.discoverComposable(discoverViewModel: DiscoverViewModel){
+fun NavGraphBuilder.discoverComposable(){
     composable(route = DISCOVER_ROUTE){
-        DiscoverScreen(discoverViewModel)
+        DiscoverScreen()
     }
 }

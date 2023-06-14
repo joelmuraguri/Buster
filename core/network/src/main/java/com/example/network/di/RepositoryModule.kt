@@ -1,6 +1,6 @@
 package com.example.network.di
 
-import com.example.network.repo.FilmRepository
+import com.example.network.repo.PagedFilmsRepository
 import com.example.network.service.BusterApiService
 import dagger.Module
 import dagger.Provides
@@ -14,6 +14,6 @@ object RepositoryModule {
 
     @Singleton
     @Provides
-    fun provideMoviesRepository(apiService: BusterApiService) = FilmRepository(apiService = apiService)
+    fun providePagedFilmsRepository(apiService: BusterApiService) = PagedFilmsRepository(apiService = apiService)
 
 }

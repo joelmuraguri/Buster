@@ -25,7 +25,7 @@ paging = "1.0.0-alpha20"
 coil = "2.4.0"
 hilt = "2.44.2"
 hiltExt = "1.0.0"
-androidxHiltNavigationCompose = "1.0.0"
+androidxHiltNavigationCompose = "1.1.0-alpha01"
 
 #hilt = "24.3.2"
 #hiltNavigation = "1.0.0"
