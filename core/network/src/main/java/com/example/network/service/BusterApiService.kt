@@ -24,4 +24,16 @@ interface BusterApiService {
         @Query("api_key") apiKey: String = "cc094bc888f690a84f4bc1439cd65f70",
     ) : FilmResponse
 
+    @GET("/3/trending/movie/day")
+    suspend fun getTrendingFilms(
+        @Query("page") page: Int,
+        @Query("api_key") apiKey: String = "cc094bc888f690a84f4bc1439cd65f70",
+    ) : FilmResponse
+
+    @GET("/3/movie/top_rated")
+    suspend fun getTopRatedFilms(
+        @Query("page") page: Int,
+        @Query("api_key") apiKey: String = "cc094bc888f690a84f4bc1439cd65f70",
+    ) : FilmResponse
+
 }

@@ -9,6 +9,8 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.network.model.FilmDTO
 import com.example.network.paging.PopularFilmSource
+import com.example.network.paging.TopRatedFilmSource
+import com.example.network.paging.TrendingFilmSource
 import com.example.network.paging.UpcomingFimSource
 import com.example.network.repo.PagedFilmsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -30,6 +32,14 @@ class DiscoverViewModel @Inject constructor(
 
     val upcomingFilms : Flow<PagingData<FilmDTO>> = Pager(PagingConfig(pageSize = 20)){
         UpcomingFimSource(repository)
+    }.flow.cachedIn(viewModelScope)
+
+    val trendingFilms : Flow<PagingData<FilmDTO>> = Pager(PagingConfig(pageSize = 20)){
+        TrendingFilmSource(repository)
+    }.flow.cachedIn(viewModelScope)
+
+    val topRatedFilms : Flow<PagingData<FilmDTO>> = Pager(PagingConfig(pageSize = 20)){
+        TopRatedFilmSource(repository)
     }.flow.cachedIn(viewModelScope)
 
     private val _tabIndex: MutableStateFlow<Int> = MutableStateFlow(0)

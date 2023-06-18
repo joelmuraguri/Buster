@@ -22,4 +22,13 @@ class PagedFilmsRepository @Inject constructor (
         return apiService.getUpcomingFilms(page = page)
     }
 
+    suspend fun getTrendingFilms(page : Int) : FilmResponse{
+        delay(1500L)
+        return apiService.getTrendingFilms(page = page)
+    }
+   suspend fun getTopRatedFilms(page : Int) : FilmResponse{
+        delay(1500L)
+        return apiService.getTopRatedFilms(page = page)
+    }
+
 }
