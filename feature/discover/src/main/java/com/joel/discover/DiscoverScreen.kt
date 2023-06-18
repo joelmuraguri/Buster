@@ -10,6 +10,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
@@ -25,7 +29,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
@@ -44,7 +47,31 @@ import kotlinx.coroutines.flow.Flow
 fun DiscoverScreen(
     discoverViewModel: DiscoverViewModel = hiltViewModel()
 ){
+
     TabLayout(viewModel = discoverViewModel)
+}
+
+@Composable
+fun LatestFilmContents(){
+
+
+
+}
+
+@Composable
+fun NowPlayingContents(discoverViewModel: DiscoverViewModel){
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(12.dp)
+            .verticalScroll(rememberScrollState())
+    ) {
+        TrendingFilms(viewModel = discoverViewModel)
+        PopularFilms(viewModel = discoverViewModel)
+        TopRatedFilms(viewModel = discoverViewModel)
+
+    }
 }
 
 @Composable
@@ -54,7 +81,7 @@ fun PopularFilms(
     Box(contentAlignment = Alignment.Center) {
         Column {
             Text(
-                text = "Popular Films",
+                text = "Most Popular",
                 style = MaterialTheme.typography.headlineMedium
             )
             Spacer(modifier = Modifier.height(4.dp))
@@ -166,19 +193,254 @@ fun UpcomingFilms(
     viewModel: DiscoverViewModel
 ){
     Box(contentAlignment = Alignment.Center) {
-        Column {
-            Text(
-                text = "Upcoming Films",
-                style = MaterialTheme.typography.headlineMedium
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            UpcomingFilmsScrollableItems(popularFilms = viewModel.upcomingFilms)
-        }
+
+        UpcomingFilmsScrollableItems(popularFilms = viewModel.upcomingFilms)
+
     }
 }
 
 @Composable
 fun UpcomingFilmsScrollableItems(
+    popularFilms : Flow<PagingData<FilmDTO>>
+){
+    val lazyFilmItems = popularFilms.collectAsLazyPagingItems()
+
+
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2)
+    ){
+        items(lazyFilmItems.itemCount){ index ->
+            lazyFilmItems[index]?.let { film ->
+                FilmItem(
+                    filmDTO = film,
+                )
+            }
+        }
+
+        lazyFilmItems.apply {
+            when{
+
+                loadState.refresh is LoadState.Loading -> {
+                    item {
+                        Box(
+                            contentAlignment = Alignment.Center
+                        ) {
+                            CircularProgressIndicator(
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .scale(0.5f)
+                                    .align(Alignment.Center),
+                                color = Color.Yellow
+                            )
+                        }
+
+                    }
+                }
+                loadState.append is LoadState.Loading -> {
+                    item {
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            CircularProgressIndicator(
+                                modifier = Modifier
+                                    .scale(0.5f)
+                                    .align(Alignment.Center)
+                                    .fillMaxWidth(),
+                                color = Color.Yellow
+                            )
+                        }
+                    }
+                }
+                loadState.refresh is LoadState.Error -> {
+                    val error = lazyFilmItems.loadState.refresh as LoadState.Error
+                    item {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ){
+                            Column(
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                error.error.localizedMessage?.let {
+                                    Text(
+                                        text = it,
+                                        color = Color.Red
+                                    )
+                                }
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Button(onClick = { refresh() }) {
+                                    Text(text = "Retry")
+                                }
+                            }
+                        }
+                    }
+                }
+                loadState.append is LoadState.Error -> {
+                    val error = lazyFilmItems.loadState.append as LoadState.Error
+                    item {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ){
+                            Column(
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                error.error.localizedMessage?.let {
+                                    Text(
+                                        text = it,
+                                        color = Color.Red
+                                    )
+                                }
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Button(onClick = { refresh() }) {
+                                    Text(text = "Retry")
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+
+}
+@Composable
+fun TrendingFilms(
+    viewModel: DiscoverViewModel
+){
+    Box(contentAlignment = Alignment.Center) {
+        Column {
+            Text(
+                text = "Trending",
+                style = MaterialTheme.typography.headlineMedium
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            TrendingFilmsScrollableItems(popularFilms = viewModel.trendingFilms)
+        }
+    }
+}
+
+@Composable
+fun TrendingFilmsScrollableItems(
+    popularFilms : Flow<PagingData<FilmDTO>>
+){
+    val lazyFilmItems = popularFilms.collectAsLazyPagingItems()
+
+    LazyRow(
+        modifier = Modifier.fillMaxWidth()
+    ){
+        items(lazyFilmItems){ filmDTO ->
+            FilmItem(filmDTO = filmDTO!!)
+        }
+
+        lazyFilmItems.apply {
+            when{
+
+                loadState.refresh is LoadState.Loading -> {
+                    item {
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            CircularProgressIndicator(
+                                modifier = Modifier
+                                    .scale(0.5f)
+                                    .align(Alignment.Center)
+                                    .fillMaxWidth(),
+                                color = Color.Yellow
+                            )
+                        }
+
+                    }
+                }
+                loadState.append is LoadState.Loading -> {
+                    item {
+                        Box(
+                            contentAlignment = Alignment.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            CircularProgressIndicator(
+                                modifier = Modifier
+                                    .scale(0.5f)
+                                    .align(Alignment.Center)
+                                    .fillMaxWidth(),
+                                color = Color.Yellow
+                            )
+                        }
+                    }
+                }
+                loadState.refresh is LoadState.Error -> {
+                    val error = lazyFilmItems.loadState.refresh as LoadState.Error
+                    item {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ){
+                            Column(
+                                verticalArrangement = Arrangement.Center,
+                                horizontalAlignment = Alignment.CenterHorizontally
+                            ) {
+                                error.error.localizedMessage?.let {
+                                    Text(
+                                        text = it,
+                                        color = Color.Red
+                                    )
+                                }
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Button(onClick = { refresh() }) {
+                                    Text(text = "Retry")
+                                }
+                            }
+                        }
+                    }
+                }
+                loadState.append is LoadState.Error -> {
+                    val error = lazyFilmItems.loadState.append as LoadState.Error
+                    item {
+                        Column(
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            error.error.localizedMessage?.let {
+                                Text(
+                                    text = it,
+                                    color = Color.Red
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Button(onClick = { refresh() }) {
+                                Text(text = "Retry")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@Composable
+fun TopRatedFilms(
+    viewModel: DiscoverViewModel
+){
+    Box(contentAlignment = Alignment.Center) {
+        Column {
+            Text(
+                text = "Top Rated",
+                style = MaterialTheme.typography.headlineMedium
+            )
+            Spacer(modifier = Modifier.height(4.dp))
+            TopRatedFilmsScrollableItems(popularFilms = viewModel.topRatedFilms)
+        }
+    }
+}
+
+@Composable
+fun TopRatedFilmsScrollableItems(
     popularFilms : Flow<PagingData<FilmDTO>>
 ){
     val lazyFilmItems = popularFilms.collectAsLazyPagingItems()
@@ -292,7 +554,7 @@ fun TabLayout(viewModel: DiscoverViewModel) {
             }
         }
         when (tabIndex) {
-            0 -> PopularFilms(viewModel = viewModel)
+            0 -> NowPlayingContents(discoverViewModel = viewModel)
             1 -> UpcomingFilms(viewModel = viewModel)
         }
     }
@@ -339,12 +601,6 @@ fun FilmItem(
                 }
             }
         }
-        
-        Text(
-            text = filmDTO.title,
-            overflow = TextOverflow.Clip
-        )
-
     }
 }
 
