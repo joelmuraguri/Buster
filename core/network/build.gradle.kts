@@ -47,7 +47,6 @@ dependencies {
     implementation(libs.bundles.okhttp)
     implementation(libs.androidx.paging)
     implementation(libs.hilt.android)
-    implementation(libs.androidx.hilt.navigation.compose)
     kapt(libs.hilt.compiler)
     kaptAndroidTest(libs.hilt.compiler)
     testImplementation(libs.junit)
