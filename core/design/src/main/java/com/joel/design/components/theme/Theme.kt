@@ -1,4 +1,4 @@
-package com.joel.buster.ui.theme
+package com.joel.design.components.theme
 
 import android.app.Activity
 import android.os.Build
