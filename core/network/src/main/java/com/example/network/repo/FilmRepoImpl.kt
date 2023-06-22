@@ -24,7 +24,15 @@ class FilmRepoImpl(
         }
     }
 
-    override suspend fun getFilmDetails(id: Int): Flow<Resource<FilmDTO>> {
-        TODO("Not yet implemented")
+    override suspend fun getFilmDetails(id: Int): Flow<Resource<FilmDTO>> = flow {
+        emit(Resource.Loading())
+        try {
+            val response = apiService.getFilmDetails(filmId = id)
+            emit(Resource.Success(response))
+        } catch (e : HttpException){
+            emit(Resource.Error(errorMessage =  e.localizedMessage ?: "An expected Error Occurred"))
+        } catch ( e: IOException){
+            emit(Resource.Error(errorMessage = "Couldn't reach Server. Check your Internet Connection"))
+        }
     }
 }

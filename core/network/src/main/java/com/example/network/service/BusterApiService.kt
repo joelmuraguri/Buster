@@ -3,6 +3,7 @@ package com.example.network.service
 import com.example.network.model.FilmDTO
 import com.example.network.model.FilmResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface BusterApiService {
@@ -17,6 +18,12 @@ interface BusterApiService {
     suspend fun getLatestFilm(
         @Query("api_key") apiKey: String = "cc094bc888f690a84f4bc1439cd65f70",
     ) : FilmDTO
+
+    @GET("/3/movie/{movie_id}")
+    suspend fun getFilmDetails(
+        @Query("api_key") apiKey: String = "cc094bc888f690a84f4bc1439cd65f70",
+        @Path("movie_id") filmId: Int,
+        ) : FilmDTO
 
     @GET("/3/movie/upcoming")
     suspend fun getUpcomingFilms(

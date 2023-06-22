@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import com.joel.buster.ui.theme.BusterTheme
+import com.joel.design.components.theme.BusterTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 
