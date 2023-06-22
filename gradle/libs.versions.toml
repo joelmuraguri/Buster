@@ -27,6 +27,7 @@ hilt = "2.44.2"
 hiltExt = "1.0.0"
 androidxHiltNavigationCompose = "1.1.0-alpha01"
 androidHiltViewModel = "1.0.0-alpha03"
+contentAlpha = "1.5.0-beta01"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name= "core-ktx", version.ref="androidxCoreKtx" }
@@ -65,7 +66,7 @@ hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testi
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
 hilt-ext-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hiltExt" }
-
+androidx-content-alpha = { group = "androidx.compose.material", name="material-android", version.ref="contentAlpha"}
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradlePlugin" }

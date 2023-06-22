@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompact)
     implementation(libs.androidx.material)
+    implementation(libs.androidx.content.alpha)
     testImplementation(libs.junit)
     androidTestImplementation (libs.bundles.junit.test)
     androidTestImplementation(libs.androidx.test.espresso)
