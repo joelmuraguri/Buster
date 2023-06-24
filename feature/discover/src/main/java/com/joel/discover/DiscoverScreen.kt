@@ -37,6 +37,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -48,6 +49,7 @@ import coil.compose.AsyncImagePainter
 import coil.compose.SubcomposeAsyncImage
 import coil.compose.SubcomposeAsyncImageContent
 import com.example.common.Constants.BASE_POSTER_IMAGE_URL
+import com.example.common.Constants.IMAGE_URL
 import com.example.network.model.FilmDTO
 import com.joel.design.components.TranslucentStatusBarLayout
 import com.joel.design.ext.landscapeCutoutPadding
@@ -68,44 +70,55 @@ fun DiscoverScreen(
                 .navigationBarsPadding()
         ) {
             Box {
-                Image(
-                    painter = painterResource(R.drawable.background),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(200.dp),
-//                        .bannerParallax(scrollState),
-                    contentScale = ContentScale.Crop,
-                    alignment = Alignment.TopCenter
-                )
+//                Image(
+//                    painter = painterResource(R.drawable.background),
+//                    contentDescription = null,
+//                    modifier = Modifier
+//                        .fillMaxWidth()
+//                        .height(200.dp),
+////                        .bannerParallax(scrollState),
+//                    contentScale = ContentScale.Crop,
+//                    alignment = Alignment.TopCenter
+//                )
 
-//                state.latestFilm?.let {film ->
-//                    ImageBanner(
-//                        imageURL = "$IMAGE_URL/${film.poster_path}",
-//                        modifier = Modifier
-//                            .fillMaxWidth()
-//                            .height(200.dp)
-//                            .bannerParallax(scrollState),
-//                    )
-//                }
-//                if (state.error.isNotBlank()){
-//                    Text(
-//                        text = state.error,
-//                        color = MaterialTheme.colorScheme.error,
-//                        textAlign = TextAlign.Center,
-//                        modifier = Modifier
-//                            .fillMaxWidth()
-//                            .padding(horizontal = 20.dp)
-//                            .align(Alignment.Center)
-//                    )
-//                }
-//                if (state.isLoading){
-//                    CircularProgressIndicator(
-//                        modifier = Modifier
-//                            .align(Alignment.Center)
-//                            .scale(0.5f)
-//                    )
-//                }
+                state.latestFilm?.let {film ->
+                    ImageBanner(
+                        imageURL = "$IMAGE_URL/${film.poster_path}",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(200.dp),
+                    )
+                    Text(
+                        text = film.title,
+                        color = MaterialTheme.colorScheme.onSecondaryContainer,
+                        modifier = Modifier
+                            .align(Alignment.BottomStart)
+                            .padding(
+                                start = 24.dp,
+                                top = 16.dp
+                            )
+                            .landscapeCutoutPadding()
+                    )
+
+                }
+                if (state.error.isNotBlank()){
+                    Text(
+                        text = state.error,
+                        color = MaterialTheme.colorScheme.error,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp)
+                            .align(Alignment.Center)
+                    )
+                }
+                if (state.isLoading){
+                    CircularProgressIndicator(
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .scale(0.5f)
+                    )
+                }
                 Box(
                     modifier = Modifier
                         .background(
@@ -141,10 +154,13 @@ fun DiscoverScreen(
 
 @Composable
 fun LatestFilmContents(
-    discoverViewModel: DiscoverViewModel
+    filmDTO: FilmDTO
 ){
 
-    val latestFilmState = discoverViewModel.latestFilmState.value
+    Column {
+        Text(text = filmDTO.title)
+    }
+
 
 }
 
