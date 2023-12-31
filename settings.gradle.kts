@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -14,4 +15,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Buster"
 include (":app")
-
+include(":core:network")
