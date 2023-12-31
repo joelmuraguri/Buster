@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Buster"
 include (":app")
 include(":core:network")
+include(":core:domain")
