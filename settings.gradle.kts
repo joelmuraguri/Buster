@@ -14,13 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Buster"
 include (":app")
-include(":feature:discover")
-include(":feature:media")
-include(":feature:watchlist")
-include(":feature:profile")
-include(":feature:search")
-include(":core:design")
-include(":core:network")
-include(":core:common")
-include(":core:domain")
-include(":core:data")
+

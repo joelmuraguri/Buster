@@ -3,8 +3,6 @@ import org.jetbrains.kotlin.de.undercouch.gradle.tasks.download.org.apache.http.
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
-    id("dagger.hilt.android.plugin")
 }
 
 //val credentials = rootProject.file("local.properties")
@@ -70,16 +68,6 @@ android {
 
 dependencies {
 
-    implementation(project(":feature:discover"))
-    implementation(project(":feature:watchlist"))
-    implementation(project(":feature:profile"))
-    implementation(project(":feature:search"))
-    implementation(project(":feature:media"))
-    implementation(project(":core:design"))
-    implementation(project(":core:network"))
-    implementation(project(":core:common"))
-    implementation(project(":core:domain"))
-    implementation(project(":core:data"))
 
     implementation(libs.androidx.tracing.ktx)
     implementation(libs.androidx.compose.runtime.tracing)
@@ -90,10 +78,6 @@ dependencies {
     implementation (libs.androidx.activity.compose)
     implementation (platform(libs.androidx.compose.bom))
     implementation (libs.bundles.compose)
-    implementation(libs.hilt.android)
-    implementation(libs.androidx.hilt.navigation.compose)
-    kapt(libs.hilt.compiler)
-    kaptAndroidTest(libs.hilt.compiler)
     testImplementation (libs.junit)
     androidTestImplementation (libs.bundles.junit.test)
     androidTestImplementation (libs.androidx.test.espresso)
