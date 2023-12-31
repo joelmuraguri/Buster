@@ -1,33 +1,37 @@
 [versions]
-androidxCoreKtx = "1.10.1"
-androidxLifecycleKtx = "2.6.1"
-androidxActivity = "1.7.1"
-androidxComposeBom = "2022.10.00"
+androidxCoreKtx = "1.12.0"
+androidxLifecycleKtx = "2.6.2"
+androidxActivity = "1.8.2"
+androidxComposeBom = "2023.10.01"
 junit = "4.13.2"
-androidxComposeCompiler = "1.4.7"
 androidxTestExtJunit = "1.1.5"
 androidxTestEspresso = "3.5.1"
-gradlePlugin = "8.0.2"
-kotlin = "1.8.21"
-appcompat = "1.6.1"
-googlMaterial = "1.9.0"
-composeNavigation = "2.5.1"
-androidx-window = "1.1.0-rc01"
-ksp = "1.8.20-1.0.11"
+gradlePlugin = "8.2.0"
+kotlin = "1.9.10"
+googlMaterial = "1.11.0"
+composeNavigation = "2.7.6"
+androidx-window = "1.2.0"
+ksp = "1.9.10-1.0.13"
 androidxAppCompact = "1.6.1"
-androidMaterial = "1.9.0"
-androidxComposeMaterial3 = "1.1.0-alpha06"
-androidxComposeRuntimeTracing = "1.0.0-alpha01"
-androidxTracing = "1.1.0"
-retrofit = "2.9.0"
-okhttp3 = "5.0.0-alpha.2"
-paging = "1.0.0-alpha16"
+androidMaterial = "1.11.0"
+androidxComposeMaterial3 = "1.1.2"
+androidxComposeRuntimeTracing = "1.0.0-beta01"
+androidxTracing = "1.2.0"
+paging = "3.2.1"
 coil = "2.4.0"
-hilt = "2.44.2"
-hiltExt = "1.0.0"
-androidxHiltNavigationCompose = "                                                                                                                                                                                                                                                                           "
-androidHiltViewModel = "1.0.0-alpha03"
-contentAlpha = "1.5.0-beta01"
+hilt = "2.48"
+hiltExt = "1.1.0"
+androidxHiltNavigationCompose = "1.1.0"
+contentAlpha = "1.5.4"
+kotlinx-serialization-json = "1.5.1"
+ktor-client = "2.3.3"
+ktor-client-serialization = "1.5.0"
+serialization = "1.9.10"
+room = "2.6.1"
+kotlin-coroutines = "1.7.3"
+timber = "5.0.1"
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name= "core-ktx", version.ref="androidxCoreKtx" }
@@ -54,19 +58,31 @@ androidx-material = { group="com.google.android.material", name="material",versi
 androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "androidxComposeMaterial3" }
 androidx-compose-runtime-tracing = { group = "androidx.compose.runtime", name = "runtime-tracing", version.ref = "androidxComposeRuntimeTracing" }
 androidx-tracing-ktx = { group = "androidx.tracing", name = "tracing-ktx", version.ref = "androidxTracing" }
-squareup-retrofit2 = { group ="com.squareup.retrofit2", name = "retrofit", version.ref="retrofit"}
-squareup-retrofit2-converter-gson = { group ="com.squareup.retrofit2", name = "converter-gson", version.ref="retrofit"}
-squareup-okhttp3 = { group ="com.squareup.okhttp3", name = "okhttp", version.ref="okhttp3"}
-squareup-okhttp3-logging = { group ="com.squareup.okhttp3", name = "logging-interceptor", version.ref="okhttp3"}
 androidx-paging = { group="androidx.paging", name="paging-compose", version.ref="paging"}
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor-client" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor-client" }
+ktor-client-logging-jvm = { module = "io.ktor:ktor-client-logging-jvm", version.ref = "ktor-client" }
+ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor-client-serialization" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor-client" }
+ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor-client" }
 coil-compose = { group="io.coil-kt", name="coil-compose", version.ref="coil"}
-androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-android-testing = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hilt-ext-compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
 hilt-ext-work = { group = "androidx.hilt", name = "hilt-work", version.ref = "hiltExt" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "androidxHiltNavigationCompose" }
 androidx-content-alpha = { group = "androidx.compose.material", name="material-android", version.ref="contentAlpha"}
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-testing = { group ="androidx.room", name= "room-testing", version.ref="room"}
+kotlin-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
+kotlin-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlin-coroutines" }
+timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
+
+
 
 # Dependencies of the included build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradlePlugin" }
@@ -79,15 +95,24 @@ android-library = {id = "com.android.library", version.ref="gradlePlugin"}
 kotlin-android = {id = "org.jetbrains.kotlin.android", version.ref = "kotlin"}
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+serialization = {id = "org.jetbrains.kotlin.plugin.serialization", version.ref="serialization" }
 
 
+# custom app defined plugins
+buster-android-application = { id = "buster.android.application", version = "unspecified" }
+buster-kotlin-android = { id = "buster.kotlin.android", version = "unspecified" }
+buster-android-compose = { id = "buster.android.compose", version = "unspecified" }
+buster-android-library = { id = "buster.android.library", version = "unspecified" }
+buster-android-sharedLibrary = { id = "buster.shared.library", version = "unspecified" }
+buster-android-ktor-client = { id = "buster.ktor.client", version="unspecified"}
+buster-android-room = { id = "buster.room.android", version="unspecified"}
+buster-android-hilt = { id = "buster.android.hilt", version="unspecified"}
 
 [bundles]
 compose = ["androidx-compose-ui", "androidx-compose-ui-graphics", "androidx-compose-ui-tooling-preview", "androidx-compose-material3"]
 lifecycle = ["androidx-lifecycle-runtime", "androidx-lifecycle-viewmodel", "androidx-lifecycle-runtime-compose"]
 compose-debug = [ "androidx-compose-ui-tooling", "androidx-compose-ui-test-manifest"]
 junit-test = ["androidx-compose-ui-test-junit4", "androidx-ext-junit"]
-okhttp = ["squareup-okhttp3", "squareup-okhttp3-logging"]
-retrofit = ["squareup-retrofit2","squareup-retrofit2-converter-gson"]
-#hilt = ["androidx-hilt-navigation", "hilt-android"]
-#hilt-kapt = [ "hilt-kapt-compiler", "hilt-compiler"]
+
