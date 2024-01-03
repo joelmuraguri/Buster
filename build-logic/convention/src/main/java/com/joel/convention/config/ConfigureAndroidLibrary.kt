@@ -33,6 +33,15 @@ fun Project.configAndroidLibrary(
             }
         }
 
+        compileOptions {
+            sourceCompatibility = ProjectConfig.sourceCompatibility
+            targetCompatibility = ProjectConfig.targetCompatibility
+        }
+
+        kotlinOptions {
+            jvmTarget = ProjectConfig.jvmTarget
+        }
+
         dependencies {
             "implementation"(libs.findLibrary("androidx-core-ktx").get())
             "implementation"(libs.findLibrary("androidx-appcompact").get())
