@@ -17,3 +17,4 @@ rootProject.name = "Buster"
 include (":app")
 include(":core:network")
 include(":core:domain")
+include(":core:database")
