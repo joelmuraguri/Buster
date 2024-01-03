@@ -38,9 +38,6 @@ fun Project.configAndroidLibrary(
             targetCompatibility = ProjectConfig.targetCompatibility
         }
 
-        kotlinOptions {
-            jvmTarget = ProjectConfig.jvmTarget
-        }
 
         dependencies {
             "implementation"(libs.findLibrary("androidx-core-ktx").get())
