@@ -1,3 +1,5 @@
+import java.util.Properties
+
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
     alias(libs.plugins.buster.kotlin.android)
@@ -7,6 +9,7 @@ plugins {
     alias(libs.plugins.buster.android.sharedLibrary)
 
 }
+
 
 android {
     namespace = "com.joel.network"
