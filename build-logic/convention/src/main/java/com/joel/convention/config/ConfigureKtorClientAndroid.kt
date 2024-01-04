@@ -1,5 +1,6 @@
 package com.joel.convention.config
 
+import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
@@ -7,7 +8,7 @@ import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 
 fun Project.configureKtorClient(
-    extension : LibraryExtension
+    extension : CommonExtension<*, *, *, *, *>
 ){
 
     extension.apply {
