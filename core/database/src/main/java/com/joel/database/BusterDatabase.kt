@@ -19,6 +19,10 @@ import com.joel.database.model.movie.PopularMovieEntity
 import com.joel.database.model.movie.TopRatedMovieEntity
 import com.joel.database.model.movie.TrendingMovieEntity
 import com.joel.database.model.search.SearchEntity
+import com.joel.database.model.tv.AiringTodayTvEntity
+import com.joel.database.model.tv.OnAirTvEntity
+import com.joel.database.model.tv.PopularTvEntity
+import com.joel.database.model.tv.TopRatedTvEntity
 import com.joel.database.utils.StringTypeConverter
 
 @Database(
@@ -28,8 +32,12 @@ import com.joel.database.utils.StringTypeConverter
         TrendingMovieEntity::class,
         TopRatedMovieEntity::class,
         NowPlayingMovieEntity::class,
-        PopularMovieEntity::class],
-    version = 1
+        PopularMovieEntity::class,
+        AiringTodayTvEntity::class,
+        OnAirTvEntity::class, PopularTvEntity::class,
+        TopRatedTvEntity::class],
+    version = 1,
+    exportSchema = false
 )
 @TypeConverters(StringTypeConverter::class)
 abstract class BusterDatabase : RoomDatabase() {
