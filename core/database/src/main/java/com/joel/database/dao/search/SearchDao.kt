@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface SearchDao {
 
     /** fetches list of searches made by order of most recently searched and clicked on */
-    @Query("SELECT *, datetime(timeStamp / 1000, 'unixepoch') as formattedDate FROM SearchEntity ORDER BY timeStamp DESC")
+    @Query("SELECT *, datetime(formattedDate / 1000, 'unixepoch') as formattedDate FROM SearchEntity ORDER BY formattedDate DESC")
     fun fetchAll() : Flow<List<SearchEntity>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
