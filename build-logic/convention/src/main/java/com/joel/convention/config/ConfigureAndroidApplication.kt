@@ -18,7 +18,7 @@ fun Project.configureAndroidApplication(
 
 
         defaultConfig {
-            applicationId = "company.excite.boltshift"
+            applicationId = "com.joel.buster"
 
             targetSdk = ProjectConfig.targetSdk
             minSdk = ProjectConfig.minSdk
