@@ -11,5 +11,6 @@ data class AiringTodayTvEntity(
     val rating : Double,
     val overView : String,
     val genres : List<String>,
-    val adult : String
+    val adult : String,
+    val postUrl : String
 )
