@@ -1,4 +1,4 @@
-package com.joel.domain
+package com.joel.domain.model
 
 import com.joel.domain.model.film.Film
 
