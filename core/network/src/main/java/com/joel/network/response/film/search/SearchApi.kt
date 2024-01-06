@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class SearchApi(
     val page: Int ? = null,
-    val results: List<Result> ? = null,
+    val results: List<Result> = emptyList(),
     @SerialName("total_pages")
     val totalPages: Int ? = null,
     @SerialName("total_results")

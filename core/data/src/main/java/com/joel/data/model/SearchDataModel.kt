@@ -5,5 +5,6 @@ data class SearchDataModel(
     val postUrl : String,
     val releaseDate : String,
     val genres : List<String>,
-    val filmType : String
+    val filmType : String,
+    val filmId : Int
 )
