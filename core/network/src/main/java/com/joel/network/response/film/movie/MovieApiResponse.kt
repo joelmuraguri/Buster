@@ -8,7 +8,7 @@ data class MovieApiResponse(
     val dates: Dates ? = null,
     val page: Int ?= null ,
     @SerialName("results")
-    val movies: List<Movies> ? = null,
+    val movies: List<Movies> = emptyList(),
     @SerialName("total_pages")
     val totalPages: Int ?= null,
     @SerialName("total_results")

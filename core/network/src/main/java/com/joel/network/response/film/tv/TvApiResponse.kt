@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class TvApiResponse(
     val page: Int ?= null,
     @SerialName("results")
-    val tvs: List<Tv> ?= null,
+    val tvs: List<Tv> = emptyList(),
     @SerialName("total_pages")
     val totalPages: Int ?= null,
     @SerialName("total_results")
