@@ -3,6 +3,7 @@ package com.joel.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.joel.database.dao.RemoteKeysDao
 import com.joel.database.dao.WatchListDao
 import com.joel.database.dao.movie.NowPlayingMovieDao
 import com.joel.database.dao.movie.PopularMovieDao
@@ -13,6 +14,7 @@ import com.joel.database.dao.tv.AiringTodayTvDao
 import com.joel.database.dao.tv.OnTheAirTvDao
 import com.joel.database.dao.tv.PopularTvDao
 import com.joel.database.dao.tv.TopRatedTvDao
+import com.joel.database.model.RemoteKeys
 import com.joel.database.model.WatchListEntity
 import com.joel.database.model.movie.NowPlayingMovieEntity
 import com.joel.database.model.movie.PopularMovieEntity
@@ -35,7 +37,7 @@ import com.joel.database.utils.StringTypeConverter
         PopularMovieEntity::class,
         AiringTodayTvEntity::class,
         OnAirTvEntity::class, PopularTvEntity::class,
-        TopRatedTvEntity::class],
+        TopRatedTvEntity::class, RemoteKeys::class],
     version = 1,
     exportSchema = false
 )
@@ -52,5 +54,6 @@ abstract class BusterDatabase : RoomDatabase() {
     abstract fun popularTvDao() : PopularTvDao
     abstract fun airingTodayTvDao() : AiringTodayTvDao
     abstract fun onTheAirTvDao() : OnTheAirTvDao
+    abstract fun remoteKeysDao() : RemoteKeysDao
 
 }
