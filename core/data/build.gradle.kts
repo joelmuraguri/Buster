@@ -1,44 +1,20 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.buster.android.library)
+    alias(libs.plugins.buster.kotlin.android)
+    alias(libs.plugins.buster.android.hilt)
+    alias(libs.plugins.buster.android.sharedLibrary)
+    alias(libs.plugins.buster.android.room)
 }
 
 android {
     namespace = "com.joel.data"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
 }
 
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompact)
-    implementation(libs.google.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.ext.junit)
-    androidTestImplementation(libs.androidx.test.espresso)
+    implementation(project(":core:network"))
+    implementation(project(":core:database"))
+    implementation(libs.androidx.paging)
+
 }
