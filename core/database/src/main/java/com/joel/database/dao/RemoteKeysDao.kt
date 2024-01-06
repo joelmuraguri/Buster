@@ -10,7 +10,7 @@ import com.joel.database.model.RemoteKeys
 interface RemoteKeysDao {
 
     @Query("SELECT * FROM remote_keys_table WHERE id =:id")
-    suspend fun getRemoteKeys(id: String): RemoteKeys
+    suspend fun getRemoteKeys(id: Int): RemoteKeys
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addAllRemoteKeys(remoteKeys: List<RemoteKeys>)
