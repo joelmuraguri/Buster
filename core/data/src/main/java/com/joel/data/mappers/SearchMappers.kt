@@ -22,6 +22,18 @@ fun SearchEntity.toDatModel() : SearchDataModel {
         title = title,
         releaseDate = releaseDate,
         postUrl = postUrl,
-        filmType = filmType
+        filmType = filmType,
+        filmId = filmId
     )
+}
+
+fun SearchApi.Result.toDataModel() : SearchDataModel{
+    return SearchDataModel(
+        filmType = mediaType.orEmpty(),
+        title = title ?: name ?: originalTitle.orEmpty(),
+        postUrl = posterPath.orEmpty(),
+        releaseDate = releaseDate ?: firstAirDate.orEmpty(),
+        genres = genreIds?.map { it.toString() } ?: emptyList(),
+        filmId = id ?: 0
+        )
 }
